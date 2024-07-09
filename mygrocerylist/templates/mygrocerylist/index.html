@@ -1,7 +1,6 @@
-<h1>my lists</h1>
-{{List.objets.all}}
-<ul>
-  {% for list in lists %}
-  <li><a href="{% url 'mygrocerylist:details' list.id %}">{{ list.title }}</a></li>
-  {% endfor %}
-</ul>
+<h1> Create a new list </h1>
+
+<form method="post">
+    {% csrf_token %}
+    <button>Create</button>
+</form>
