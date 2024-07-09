@@ -1,7 +1,15 @@
 <h1> Create a new list </h1>
 
-<form method="post">
+<form method="post" action="?type=list">
   {% csrf_token %}
-  {{form}}
+  {{list_form}}
+  <button>Create</button>
+</form>
+
+<h1> Create a new user </h1>
+
+<form method="post" action="?type=user">
+  {% csrf_token %}
+  {{user_form}}
   <button>Create</button>
 </form>

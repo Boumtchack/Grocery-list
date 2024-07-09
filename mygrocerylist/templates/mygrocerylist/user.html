@@ -1,0 +1,15 @@
+<code>{{ user.name }}</code>
+
+<form method="post">
+  {% csrf_token %}
+  {{form}}
+  <button>add list</button>
+</form>
+
+<ol>
+{% for list in lists %}
+    <li>
+        <a href="{{ list.get_absolute_url }}">{{ list.title }}</a>
+    </li>
+{% endfor %}
+</ol>
