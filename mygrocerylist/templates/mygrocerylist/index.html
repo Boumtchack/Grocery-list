@@ -1,21 +1,13 @@
-<h1> Create a new list </h1>
-
-<form method="post" action="?type=list">
-  {% csrf_token %}
-  {{list_form}}
-  <button>Create</button>
-</form>
-
 <h1> Create a new user </h1>
 
-<form method="post" action="?type=user">
+<form method="post" action="?type=new_user">
   {% csrf_token %}
   {{user_form}}
   <button>Create</button>
 </form>
 
-<!-- <form method="post">
+<form method="post" action="?type=search_user">
   {% csrf_token %}
   {{search_form}}
-  <button>find list with code</button>
-</form> -->
+  <button>search</button>
+</form>

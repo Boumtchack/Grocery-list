@@ -1,9 +1,15 @@
 <code>{{ user.name }}</code>
 
-<form method="post">
+<form method="post" action="?type=list">
   {% csrf_token %}
   {{form}}
   <button>add list</button>
+</form>
+
+<form method="post" action="?type=search">
+  {% csrf_token %}
+  {{search_form}}
+  <button>find list with code</button>
 </form>
 
 

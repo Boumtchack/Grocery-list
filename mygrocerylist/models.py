@@ -30,5 +30,7 @@ class Product(models.Model):
     amount = models.IntegerField(default=1)
     list = models.ForeignKey(List, on_delete=models.CASCADE)
 
+    def get_absolute_url(self):
+        return "/mygrocerylist/p/%s" % self.id
     def __str__(self):
         return self.name
