@@ -7,8 +7,7 @@ def view_index(request):
     if request.method == "POST":
         form = ListForm(request.POST)
         if form.is_valid():
-            new_list = form.save()
-            return redirect(List.objects.last())
+            return redirect(form.save())
         else:
             form = ListForm()
 
@@ -20,7 +19,9 @@ def view_list(request, id):
     if request.method == "POST":
         form = ProductForm(request.POST)
         if form.is_valid():
-            new_product = form.save()
+            product = form.save(commit=False)
+            product.list_id = list.id
+            product.save()
         else:
             form = ProductForm()
 

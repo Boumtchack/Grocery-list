@@ -9,4 +9,4 @@ class ListForm(ModelForm):
 class ProductForm(ModelForm):
     class Meta:
         model = Product
-        fields = "__all__"
+        fields = ["name", "ammount"]
