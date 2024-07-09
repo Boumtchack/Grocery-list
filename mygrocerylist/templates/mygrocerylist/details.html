@@ -1,2 +1,8 @@
 <code>{{ list.id }}</code>
-
+<br>
+<code>{{ list.title}}</code>
+<form method="post">
+  {% csrf_token %}
+  {{form}}
+  <button>add product</button>
+</form>
