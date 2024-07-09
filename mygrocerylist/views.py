@@ -27,7 +27,6 @@ def view_index(request):
 
 def view_user(request, id):
     user = get_object_or_404(User, pk=id)
-    lists = List.objects.filter(user=user)
 
     form = ListForm()
     if request.method == "POST":
@@ -35,7 +34,9 @@ def view_user(request, id):
         if form.is_valid():
             list = form.save(commit=False)
             list.user_id = user.id
-            list.save()
+            return redirect(list.save())
+
+    lists = List.objects.filter(user=user)
 
     return render(
         request, "mygrocerylist/user.html", {"user": user, "form": form, "lists": lists}
