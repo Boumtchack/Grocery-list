@@ -26,11 +26,13 @@ class List(models.Model):
 
 
 class Product(models.Model):
+    id = models.UUIDField(primary_key=True, default=uuid4, editable=False)
     name = models.CharField(max_length=40)
     amount = models.IntegerField(default=1)
     list = models.ForeignKey(List, on_delete=models.CASCADE)
 
     def get_absolute_url(self):
         return "/mygrocerylist/p/%s" % self.id
+
     def __str__(self):
         return self.name

@@ -7,6 +7,5 @@ urlpatterns = [
     path("", view_index, name="index"),
     path("u/<uuid:id>", view_user, name="user"),
     path("l/<uuid:id>", view_list, name="list"),
-    path("p/<id>", view_product, name="product"),
-
+    path("p/<uuid:id>", view_product, name="product"),
 ]
