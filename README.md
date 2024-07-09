@@ -1,55 +1,49 @@
-creer un nouvel environement virtuel :
-```
-python3 -m venv env
-```
+- create a new virtual env called `env`
+    ```shell
+    python3 -m venv env
+    ```
 
-activer l'environement:
-```
-source env/bin/activate
-```
+- activate/deactivate the virtual env
+    ```shell
+    source env/bin/activate
+    ```
 
-desactiver l'environement:
-```
-deactivate
-```
+    ```shell
+    deactivate
+    ```
 
-installer Django (dans le 'env'):
-```
-pip install django
-```
+- within `env`, install django
+    ```shell
+    pip install django
+    ```
 
-création d'un nouveau projet:
+- create a new django project
+  ```shell
+  django-admin startproject "projectname"
+  ```
 
-```
-django-admin startproject "projectname"
-```
+- start the server
+  ```shell
+  python manage.py runserver
+  ```
 
-lancer le serveur:
+- create an app
+  ```shell
+  python manage.py startapp "appname"
+  ```
 
-```
-python manage.py runserver
-```
+- create migrations
+  ```shell
+  python manage.py makemigrations
+  ```
 
-créaction d'une app:
+- apply migrations
+  ```shell
+  python manage.py migrate 
+  ```
 
-```
-python manage.py startapp "appname"
-```
-
-Run: 
-```
-python manage.py makemigrations to create migrations for those changes
-```
-to create migrations for those changes
-
-Run:
-
-```
-python manage.py migrate 
-```
-to apply those changes to the database.
-
-git init
-
-touch .gitignore
-
+- setup git
+  ```shell
+  git init
+  touch .gitignore
+  ```
