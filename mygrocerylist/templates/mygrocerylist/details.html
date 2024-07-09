@@ -1,8 +1,20 @@
 <code>{{ list.id }}</code>
+<code>{{ list.user.name }}</code>
 <br>
 <code>{{ list.title}}</code>
 
-<form method="post">
+
+<form method="post" action="?type=return">
+  {% csrf_token %}
+  <button>return</button>
+</form>
+
+<form method="post" action="?type=delete_list">
+  {% csrf_token %}
+  <button>delete list</button>
+</form>
+
+<form method="post" action="?type=add_product">
   {% csrf_token %}
   {{form}}
   <button>add product</button>
@@ -10,8 +22,12 @@
 
 <ol>
   {% for product in products %}
-      <li>
-          <p>{{ product.name }} x{{product.amount}}</p>
-      </li>
+  <li>
+    {{ product.name }} x{{product.amount}} {{product.id}}
+    <form method="POST" action="{{product.get_absolute_url}}">
+      {% csrf_token %}
+      <button>delete</button>
+    </form>
+  </li>
   {% endfor %}
-  </ol>
+</ol>
