@@ -34,7 +34,9 @@ def view_user(request, id):
         if type == "list":
             list_form = ListForm(request.POST)
             if list_form.is_valid():
-                return redirect(list_form.save())
+                list = form.save(commit=False)
+                list.user_id = user.id
+                return redirect(list.save())
         elif type == "search":
                 search_form = SearchForm(request.POST)
                 if search_form.is_valid():
