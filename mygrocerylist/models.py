@@ -27,7 +27,7 @@ class List(models.Model):
 
 class Product(models.Model):
     name = models.CharField(max_length=40)
-    ammount = models.IntegerField(default=1)
+    amount = models.IntegerField(default=1)
     list = models.ForeignKey(List, on_delete=models.CASCADE)
 
     def __str__(self):

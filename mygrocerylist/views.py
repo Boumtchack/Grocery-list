@@ -1,11 +1,12 @@
 from django.shortcuts import get_object_or_404, render, redirect
 from .models import List, User
-from .forms import ListForm, ProductForm, UserForm
+from .forms import ListForm, ProductForm, UserForm, SearchForm
 
 
 def view_index(request):
     list_form = ListForm()
     user_form = UserForm()
+    search_form = SearchForm()
 
     if request.method == "POST":
         type = request.GET["type"]
@@ -17,11 +18,15 @@ def view_index(request):
             user_form = UserForm(request.POST)
             if user_form.is_valid():
                 return redirect(user_form.save())
-
+        # else:
+        #     search_form = SearchForm(request.POST)
+        #     print(search_form)
+        #     if search_form.is_valid():
+        #         return redirect()
     return render(
         request,
         "mygrocerylist/index.html",
-        {"list_form": list_form, "user_form": user_form},
+        {"list_form": list_form, "user_form": user_form, "search_form": search_form},
     )
 
 
@@ -45,6 +50,7 @@ def view_user(request, id):
 
 def view_list(request, id):
     list = get_object_or_404(List, pk=id)
+    products = list.product_set.all()
     form = ProductForm()
     if request.method == "POST":
         form = ProductForm(request.POST)
@@ -55,4 +61,4 @@ def view_list(request, id):
         else:
             form = ProductForm()
 
-    return render(request, "mygrocerylist/details.html", {"list": list, "form": form})
+    return render(request, "mygrocerylist/details.html", {"list": list, "form": form, "products": products})

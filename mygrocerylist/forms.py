@@ -1,3 +1,4 @@
+from django import forms
 from django.forms import ModelForm
 from .models import Product, List, User
 
@@ -7,6 +8,8 @@ class UserForm(ModelForm):
         model = User
         fields = ["name"]
 
+class SearchForm(forms.Form):
+    code = forms.CharField(required=True)
 
 class ListForm(ModelForm):
     class Meta:
@@ -17,4 +20,4 @@ class ListForm(ModelForm):
 class ProductForm(ModelForm):
     class Meta:
         model = Product
-        fields = ["name", "ammount"]
+        fields = ["name", "amount"]

@@ -8,5 +8,10 @@
   <button>add product</button>
 </form>
 
-
-{{list.product}}
+<ol>
+  {% for product in products %}
+      <li>
+          <p>{{ product.name }} x{{product.amount}}</p>
+      </li>
+  {% endfor %}
+  </ol>
