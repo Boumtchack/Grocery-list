@@ -39,8 +39,21 @@
 
 - apply migrations
   ```shell
-  python manage.py migrate 
+  python manage.py migrate
   ```
+
+- create an admin user to access `/admin`
+    ```shell
+    python manage.py createsuperuser
+    ```
+
+- load initial data
+    ```shell
+    rm db.sqlite3
+    python manage.py migrate
+    python manage.py loaddata init-data.json
+    ```
+    This loads a superadmin user with username/password of `admin`. ⚠️ this is not secure and should not run on production.
 
 - setup git
   ```shell
