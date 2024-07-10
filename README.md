@@ -53,6 +53,7 @@
     python manage.py migrate
     python manage.py loaddata init-data.json
     ```
+    This loads a superadmin user with username/password of `admin`. ⚠️ this is not secure and should not run on production.
 
 - setup git
   ```shell
