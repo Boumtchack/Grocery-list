@@ -2,7 +2,6 @@ from django.shortcuts import get_object_or_404, render, redirect
 from .models import List, User, Product
 from .forms import ListForm, ProductForm, UserForm, SearchForm
 
-
 def view_index(request):
     user_form = UserForm()
     search_form = SearchForm()
