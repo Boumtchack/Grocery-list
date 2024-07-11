@@ -1,14 +1,13 @@
-import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { RouterOutlet, RouterLink, RouterLinkActive } from '@angular/router';
+import { Component} from '@angular/core';
+import { HomeComponent } from './home/home.component';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CommonModule, RouterOutlet, RouterLink, RouterLinkActive],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
+  imports: [HomeComponent, RouterModule],
 })
 export class AppComponent {
-  title = 'My grocery list app';
 }

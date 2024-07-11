@@ -1,0 +1,9 @@
+<section>
+  <form>
+    <input type="text" placeholder="search a list">
+    <button class="primary" type="button">Search</button>
+  </form>
+</section>
+<section class="results">
+  <app-user *ngFor="let user of userList" [user]="user"></app-user>
+</section>

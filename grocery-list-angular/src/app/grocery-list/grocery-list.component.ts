@@ -1,5 +1,8 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import {GroceryListService} from '../GroceryList.serice'
+import { User } from "../user";
 
 @Component({
   selector: 'app-grocery-list',
@@ -9,5 +12,11 @@ import { Component } from '@angular/core';
   styleUrl: './grocery-list.component.scss',
 })
 export class GroceryListComponent {
-
+  route: ActivatedRoute = inject(ActivatedRoute)
+  groceryListSerice = inject(GroceryListService);
+  user: User | undefined;
+  constructor(){
+    const groceryListId = Number(this.route.snapshot.params['id'])
+    this.groceryList = this.groceryListSerice.getGroceryListById(groceryListId)
+  }
 }

@@ -1,8 +1,6 @@
-<p>user works!</p>
-
 <div>
   <h2>User Information</h2>
   <p><strong>ID:</strong> {{ user.id }}</p>
   <p><strong>Name:</strong> {{ user.name }}</p>
-  <p><strong>List:</strong> {{ user.list }}</p>
+  <span><strong>List: </strong><a [routerLink]="['/grocery-list', user.id ]">{{ user.lists }}</a></span>
 </div>
