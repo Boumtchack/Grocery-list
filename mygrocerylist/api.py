@@ -22,7 +22,10 @@ def api_delete(cls, id):
 
 
 def post_user(request, _):
-    body = json.loads(request.body)
+    try:
+        body = json.loads(request.body)
+    except Exception as e:
+        return JsonResponse({"error": str(e)}, status=500)
     name = body.get("name")
 
     if not name:
@@ -35,7 +38,10 @@ def post_user(request, _):
 
 
 def post_list(request, _):
-    body = json.loads(request.body)
+    try:
+        body = json.loads(request.body)
+    except Exception as e:
+        return JsonResponse({"error": str(e)}, status=500)
     title = body.get("title")
     user_id = body.get("user")
 
@@ -55,7 +61,10 @@ def post_list(request, _):
 
 
 def post_product(request, _):
-    body = json.loads(request.body)
+    try:
+        body = json.loads(request.body)
+    except Exception as e:
+        return JsonResponse({"error": str(e)}, status=500)
     name = body.get("name")
     amount = body.get("amount")
     list_id = body.get("list")
