@@ -60,3 +60,19 @@
   git init
   touch .gitignore
   ```
+
+- Curl get a specific resssource
+  ```shell
+  curl http://127.0.0.1:8000/mygrocerylist/api/v1/[ressource]/[uuid]
+  ```
+
+- Curl post a new ressource
+  ```shell
+   curl -X POST http://127.0.0.1:8000/mygrocerylist/api/v1/[ressource]/
+   -d'{"data1":"data1_name","data2":"data2_name"}'
+  ```
+
+- Curl delete a specific ressource
+  ```shell
+   curl -X DELETE http://127.0.0.1:8000/mygrocerylist/api/v1/[ressource]/[uuid]
+  ```
