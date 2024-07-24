@@ -11,7 +11,7 @@ import { RouterOutlet } from '@angular/router';
 })
 export class AppComponent {
   title = 'groceryListAngular';
-  private url = '/mygrocerylist/api/v1/';
+  private url = '/mygrocerylist/api/v1/user/';
   uuid = '';
   newName = '';
   currentUser = { id: '', name: '' };
@@ -24,7 +24,7 @@ export class AppComponent {
       method: 'POST',
       body: JSON.stringify(userData)
     }
-    fetch(this.url + 'user/', options)
+    fetch(this.url, options)
       .then(response => response.json())
       .then((data) => {
         this.currentUser = data;
@@ -33,7 +33,7 @@ export class AppComponent {
   }
 
   findUser() {
-    fetch(this.url + 'user/' + this.uuid)
+    fetch(this.url + this.uuid)
       .then((response) => response.json())
       .then((data) => {
         this.currentUser = data;
