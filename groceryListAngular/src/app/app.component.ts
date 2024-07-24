@@ -1,23 +1,25 @@
 import { Component } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet],
+  imports: [RouterOutlet, FormsModule],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
 export class AppComponent {
   title = 'groceryListAngular';
   private url = '/mygrocerylist/api/v1/'
+  uuid =''
   createUser(){
     console.log("user created");
   }
 
   findUser(){
     let ressource = 'user/'
-    fetch(this.url + ressource + '14aba67a-43e1-4eb1-88fd-8d5685da8ca2')
+    fetch(this.url + ressource + this.uuid )
     .then(response => response.json())
     .then((data) => {
       console.log(data);
