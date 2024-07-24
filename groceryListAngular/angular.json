@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "grocery-list-angular": {
+    "groceryListAngular": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -62,13 +62,12 @@
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
-          "options": {"proxyConfig": "proxyconfig.json"},
           "configurations": {
             "production": {
-              "buildTarget": "grocery-list-angular:build:production"
+              "buildTarget": "groceryListAngular:build:production"
             },
             "development": {
-              "buildTarget": "grocery-list-angular:build:development"
+              "buildTarget": "groceryListAngular:build:development"
             }
           },
           "defaultConfiguration": "development"

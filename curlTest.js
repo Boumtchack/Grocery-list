@@ -18,8 +18,6 @@ function createUser(name) {
     .then(data => createList('nouvelle liste', data.id))
     .then(data => findUser(data.user))
 }
-createUser("Marco")
-
 
 function createList(title, userId) {
   const listData = {
@@ -33,11 +31,11 @@ function createList(title, userId) {
   let ressource = 'list/'
   return new Promise((resolve) => {
     fetch(url + ressource, options)
-      .then(response => response.json())
-      .then((data) => {
-        console.log(data);
-        resolve(data)
-      })
+    .then(response => response.json())
+    .then((data) => {
+      console.log(data);
+      resolve(data)
+    })
   })
 }
 
@@ -49,3 +47,5 @@ function findUser(userId) {
     console.log(data);
   })
 }
+
+createUser("Marco")

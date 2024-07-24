@@ -14,16 +14,16 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have the 'grocery-list-angular' title`, () => {
+  it(`should have the 'groceryListAngular' title`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
-    expect(app.title).toEqual('grocery-list-angular');
+    expect(app.title).toEqual('groceryListAngular');
   });
 
   it('should render title', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('h1')?.textContent).toContain('Hello, grocery-list-angular');
+    expect(compiled.querySelector('h1')?.textContent).toContain('Hello, groceryListAngular');
   });
 });
