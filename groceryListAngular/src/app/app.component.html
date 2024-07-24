@@ -1,4 +1,9 @@
 <h1>New app</h1>
 <button (click)="createUser()">new user</button>
+<input type="text" [(ngModel)]="newName">
+<br>
 <button (click)="findUser()">find user</button>
 <input type="text" [(ngModel)]="uuid">
+<br>
+{{currentUser.name}}
+{{currentUser.id}}
