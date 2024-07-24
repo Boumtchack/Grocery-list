@@ -17,12 +17,23 @@ export class AppComponent {
   currentUser = { id: '', name: '' };
 
   createUser() {
-    console.log('user created');
+    const userData = {
+      name: this.newName
+    }
+    const options = {
+      method: 'POST',
+      body: JSON.stringify(userData)
+    }
+    fetch(this.url + 'user/', options)
+      .then(response => response.json())
+      .then((data) => {
+        this.currentUser = data;
+        console.log(this.currentUser);
+      })
   }
 
   findUser() {
-    let ressource = 'user/';
-    fetch(this.url + ressource + this.uuid)
+    fetch(this.url + 'user/' + this.uuid)
       .then((response) => response.json())
       .then((data) => {
         this.currentUser = data;
