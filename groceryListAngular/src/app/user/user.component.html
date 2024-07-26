@@ -1,0 +1,16 @@
+<p>user works!</p>
+<button (click)="createUser()">new user</button>
+<input type="text" [(ngModel)]="newName">
+<br>
+<button (click)="findUser()">find user</button>
+<input type="text" [(ngModel)]="uuid">
+<br>
+
+
+@if (currentUser.id != '') {
+  <span>hello </span>{{currentUser.name}}
+  <br>
+  <span>id: </span>{{currentUser.id}}
+}@else{
+  <p>no users</p>
+}
