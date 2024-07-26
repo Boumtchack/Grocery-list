@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { RouterOutlet } from '@angular/router';
-import { AppService } from '../app.service';
 @Component({
   selector: 'app-user',
   standalone: true,
