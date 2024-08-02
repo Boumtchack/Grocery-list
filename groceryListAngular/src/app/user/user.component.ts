@@ -23,7 +23,6 @@ export class UserComponent {
 
   constructor(private userService: UserService) {}
 
-
   createUser() {
     const userData = {
       name: this.newName,
@@ -55,6 +54,7 @@ export class UserComponent {
       .then(data => {
         this.currentUser = data;
         console.log(this.currentUser);
+        this.userService.setCurrentUser(this.currentUser);
       })
       .catch(error => {
         console.error('Error finding user:', error);

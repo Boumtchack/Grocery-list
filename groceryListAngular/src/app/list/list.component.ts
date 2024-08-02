@@ -1,4 +1,4 @@
-import { UserService } from '../user/user.service';
+import { UserService } from './../user/user.service';
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { UserComponent } from '../user/user.component';
@@ -18,9 +18,10 @@ export class ListComponent {
 
   private url = '/mygrocerylist/api/v1/list/'
   newName = '';
-  currentUser: number | null = null;
+  currentUser: any = null;
 
   createList(){
+    this.currentUser = this.userService.getCurrentUser()
     const listData = {
       title: this.newName,
     }
@@ -32,7 +33,9 @@ export class ListComponent {
       fetch(this.url, options)
       .then(response => response.json())
       .then((data) => {
-        console.log(data);
+        data.user = this.currentUser
+        this.userService.updateUserLists(data)
+        console.log('list:',data,'user:', this.currentUser );
         resolve(data)
       })
     })

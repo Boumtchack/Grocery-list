@@ -1,12 +1,10 @@
 import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class UserService {
   private currentUser: any = null;
-  private url = '/mygrocerylist/api/v1/user/';
 
   constructor() {}
 
@@ -14,7 +12,14 @@ export class UserService {
     this.currentUser = user;
   }
 
-  getCurrentUser(): Observable<any> {
-    return of(this.currentUser);
+  getCurrentUser() {
+    return this.currentUser
+  }
+
+  updateUserLists(list: any){
+    this.currentUser.lists.push(list)
   }
 }
+
+
+// user Antoine test id : 03773c87-0187-4d0c-90d9-fe25e6808bd7
