@@ -18,10 +18,9 @@ export class ListComponent {
 
   private url = '/mygrocerylist/api/v1/list/'
   newName = '';
-  currentUser: any = null;
+  currentUser = this.userService.getCurrentUser() ;
 
   createList(){
-    this.currentUser = this.userService.getCurrentUser()
     const listData = {
       title: this.newName,
     }

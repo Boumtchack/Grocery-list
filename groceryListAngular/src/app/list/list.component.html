@@ -2,4 +2,8 @@
 <button (click)="createList()">new list</button>
 <input type="text" [(ngModel)]="newName">
 
-
+@for (list of currentUser.lists; track $index) {
+  <li>{{list.title}}</li>
+}@empty {
+  <li>No items found</li>
+  }
