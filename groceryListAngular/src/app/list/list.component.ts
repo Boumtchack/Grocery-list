@@ -23,6 +23,7 @@ export class ListComponent {
   createList(){
     const listData = {
       title: this.newName,
+      userId: this.currentUser.id
     }
     const options = {
       method: 'POST',
@@ -34,7 +35,6 @@ export class ListComponent {
       .then((data) => {
         data.user = this.currentUser
         this.userService.updateUserLists(data)
-        console.log('list:',data,'user:', this.currentUser );
         resolve(data)
       })
     })
