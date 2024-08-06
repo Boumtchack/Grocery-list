@@ -1,14 +1,9 @@
-@if (currentUser) {
-  <span>hello </span>{{currentUser.name}}
-  <br>
-  <span>id: </span>{{currentUser.id}}
-  <br>
-  <app-list></app-list>
-}@else{
-  <button (click)="createUser()">new user</button>
-  <input type="text" [(ngModel)]="newName">
-  <br>
-  <button (click)="findUser()">find user</button>
-  <input type="text" [(ngModel)]="uuid">
-  <br>
+<span>hello </span>{{currentUser.name}}
+<br>
+<span>id: </span>{{currentUser.id}}
+<br>
+@for (list of currentUser.lists; track $index) {
+  <a routerLink="lists">{{list.title}}</a>
+}@empty {
+<p>No items found</p>
 }
