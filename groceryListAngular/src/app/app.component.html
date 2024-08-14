@@ -1,10 +1,1 @@
-@if (currentUser) {
-<app-user></app-user>
-}@else{
-  <button (click)="createUser()">new user</button>
-  <input type="text" [(ngModel)]="userNameCreate">
-  <br>
-  <button (click)="findUser()">find user</button>
-  <input type="text" [(ngModel)]="findUserUuid">
-  <br>
-}
+<router-outlet></router-outlet>

@@ -1,35 +1,41 @@
 import { Component } from '@angular/core';
+import { UserService } from '../user/user.service';
 import { FormsModule } from '@angular/forms';
-import { RouterOutlet, Router } from '@angular/router';
-import { UserComponent } from './user/user.component';
-import { UserService } from './user/user.service';
-
+import { UserComponent } from "../user/user.component";
+import {Router} from '@angular/router'
 @Component({
-  selector: 'app-root',
+  selector: 'app-home',
   standalone: true,
-  imports: [RouterOutlet, FormsModule, UserComponent],
-  templateUrl: './app.component.html',
-  styleUrl: './app.component.scss',
+  imports: [FormsModule, UserComponent],
+  templateUrl: './home.component.html',
+  styleUrl: './home.component.scss'
 })
-export class AppComponent {
-  constructor(private userService: UserService, private router:Router) {}
+export class HomeComponent {
+  constructor(private userService: UserService, private router: Router) {}
   title = 'groceryListAngular';
   currentUser: any = null;
   userNameCreate: string ='';
   findUserUuid: string ='';
 
+  redirectToUser(){
+    this.router.navigate(['/user'])
+  }
+
   createUser(){
     this.userService.createUserInDb(this.userNameCreate)
     .then(()=>{
       this.currentUser = this.userService.getCurrentUser()
+      this.redirectToUser()
     })
-    this.router.navigate(['user'])
+
   }
 
   findUser(){
     this.userService.findUser(this.findUserUuid)
     .then(()=>{
       this.currentUser = this.userService.getCurrentUser()
+      this.redirectToUser()
     })
+
   }
 }

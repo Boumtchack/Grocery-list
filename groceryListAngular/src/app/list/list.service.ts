@@ -6,13 +6,9 @@ import { Injectable } from '@angular/core';
 })
 export class ListService {
   constructor(private userService: UserService) {}
-  private currentList: any = null;
   private apiUrl = '/mygrocerylist/api/v1/list/'
+  private currentList: any = null;
   currentUser = this.userService.getCurrentUser()
-
-  setCurrentList(list: any){
-    this.currentList = list
-  }
 
   getCurrentList(){
     return this.currentList

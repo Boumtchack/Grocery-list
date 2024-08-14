@@ -1,21 +1,26 @@
 import { Routes } from '@angular/router';
+import { HomeComponent } from './home/home.component';
 import { UserComponent } from './user/user.component';
 import { ListComponent } from './list/list.component';
-import { AppComponent } from './app.component';
 
 export const routes: Routes = [
   {
-    path: '',
-    component: AppComponent,
-    title: 'Home Page'
+    path:'',
+    redirectTo: '/home',
+    pathMatch: 'full'
   },
   {
-    path: 'users',
+    path: 'home',
+    component: HomeComponent,
+    title:'Home Page'
+  },
+  {
+    path: 'user',
     component: UserComponent,
-    title: 'User Page'
+    title:'Profile Page'
   },
   {
-    path: 'lists',
+    path: 'list/:id',
     component: ListComponent,
     title: 'List Page'
   }
