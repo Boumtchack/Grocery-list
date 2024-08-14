@@ -7,28 +7,31 @@ export class UserService {
   constructor() {}
   private currentUser: any = null;
   private apiUrl = '/mygrocerylist/api/v1/user/';
+
   getCurrentUser() {
     return this.currentUser
   }
 
-  updateUserLists(list: any){
-    this.currentUser.lists.push(list)
-  }
-
-  saveUserToSession(user: { name: string, id: string }) {
-    sessionStorage.setItem('name', user.name);
-    sessionStorage.setItem('id', user.id);
-  }
-
-  getUserFromSession(): { name: string, id: string } | null {
-    const name = sessionStorage.getItem('userName');
-    const id = sessionStorage.getItem('userId');
-
-    if (name && id) {
-      return { name, id };
-    } else {
-      return null;
+  updateUserLists(list: any) {
+    if (this.currentUser) {
+      this.currentUser.lists.push(list);
     }
+  }
+
+  saveUserIdInSession(userId: string) {
+    sessionStorage.setItem('currentUserId', userId);
+  }
+
+  loadUserFromSession() {
+    const userId = sessionStorage.getItem('currentUserId');
+    if (userId) {
+      this.findUser(userId);
+    }
+  }
+
+  clearSession() {
+    sessionStorage.clear();
+    this.currentUser = null
   }
 
   createUserInDb(newName: string) {
@@ -44,7 +47,7 @@ export class UserService {
         .then((response) => response.json())
         .then((data) => {
           this.currentUser = data;
-          this.saveUserToSession(data)
+          this.saveUserIdInSession(data.id);
           console.log("fetch", this.currentUser);
           resolve(undefined)
         })
@@ -67,7 +70,6 @@ export class UserService {
         })
         .then((data) => {
           this.currentUser = data;
-          console.log(this.currentUser);
           resolve(undefined)
         })
         .catch((error) => {
@@ -75,4 +77,5 @@ export class UserService {
         });
     })
   }
+
 }

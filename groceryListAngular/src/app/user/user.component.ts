@@ -23,8 +23,6 @@ export class UserComponent {
   lastList: any;
 
   createList() {
-    console.log('hello from user component');
-    
     this.listService.createList(this.listNameCreate)
     .then((data)=>{
       this.lastList = data
@@ -35,5 +33,10 @@ export class UserComponent {
   redirectToList(listId: string){
     this.listService.findList(listId)
     this.router.navigate([`/list/${listId}`])
+  }
+
+  clearSession(){
+    this.userService.clearSession()
+    this.router.navigate([''])
   }
 }
