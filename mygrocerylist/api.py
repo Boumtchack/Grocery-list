@@ -43,7 +43,7 @@ def post_list(request, _):
     except Exception as e:
         return JsonResponse({"error": str(e)}, status=500)
     title = body.get("title")
-    user_id = body.get("user")
+    user_id = body.get("userId")
 
     if not title:
         return JsonResponse({"error": "title is required"}, status=400)

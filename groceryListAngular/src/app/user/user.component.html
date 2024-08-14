@@ -1,0 +1,14 @@
+<span>hello </span>{{currentUser.name}}
+<br>
+<span>id: </span>{{currentUser.id}}
+<br>
+<button (click)="createList()">new List</button>
+<input type="text" [(ngModel)]="listNameCreate">
+<br>
+@for (list of currentUser.lists; track $index) {
+<a routerLink="list" (click)="redirectToList(list.id)">{{list.title}}</a>
+}@empty {
+<p>No items found</p>
+}
+
+<button (click)="clearSession()">clear session</button>

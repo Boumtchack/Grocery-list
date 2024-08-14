@@ -13,7 +13,7 @@ class User(models.Model):
         return {
             "id": str(self.id),
             "name": self.name,
-            "lists": [str(lst.id) for lst in self.list_set.all()],
+            "lists": [{"title": lst.title, "id": lst.id} for lst in self.list_set.all()],
         }
 
     def get_absolute_url(self):
