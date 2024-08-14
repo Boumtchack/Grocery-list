@@ -15,6 +15,22 @@ export class UserService {
     this.currentUser.lists.push(list)
   }
 
+  saveUserToSession(user: { name: string, id: string }) {
+    sessionStorage.setItem('name', user.name);
+    sessionStorage.setItem('id', user.id);
+  }
+
+  getUserFromSession(): { name: string, id: string } | null {
+    const name = sessionStorage.getItem('userName');
+    const id = sessionStorage.getItem('userId');
+
+    if (name && id) {
+      return { name, id };
+    } else {
+      return null;
+    }
+  }
+
   createUserInDb(newName: string) {
     return new Promise((resolve, reject)=>{
       const userData = {
@@ -28,6 +44,7 @@ export class UserService {
         .then((response) => response.json())
         .then((data) => {
           this.currentUser = data;
+          this.saveUserToSession(data)
           console.log("fetch", this.currentUser);
           resolve(undefined)
         })

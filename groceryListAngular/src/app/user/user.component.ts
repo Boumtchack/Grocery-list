@@ -1,9 +1,9 @@
-import { ListService } from './../list/list.service';
 import { RouterLink, RouterLinkActive, RouterModule, Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
-import { UserService } from './user.service';
 import { FormsModule } from '@angular/forms';
+import { Component } from '@angular/core';
+import { ListService } from './../list/list.service';
+import { UserService } from './user.service';
 
 @Component({
   selector: 'app-user',
@@ -23,13 +23,17 @@ export class UserComponent {
   lastList: any;
 
   createList() {
+    console.log('hello from user component');
+    
     this.listService.createList(this.listNameCreate)
     .then((data)=>{
       this.lastList = data
+      console.log(data);
       this.redirectToList(this.lastList.id)
     })
   }
   redirectToList(listId: string){
+    this.listService.findList(listId)
     this.router.navigate([`/list/${listId}`])
   }
 }

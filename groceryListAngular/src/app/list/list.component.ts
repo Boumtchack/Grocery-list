@@ -14,6 +14,6 @@ export class ListComponent {
   constructor(private listservice: ListService, private router: Router) {}
   currentList: any;
   ngOnInit(){
-    this.listservice.getCurrentList()
+    this.currentList = this.listservice.getCurrentList()
   }
 }

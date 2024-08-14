@@ -8,13 +8,15 @@ export class ListService {
   constructor(private userService: UserService) {}
   private apiUrl = '/mygrocerylist/api/v1/list/'
   private currentList: any = null;
-  currentUser = this.userService.getCurrentUser()
+  currentUser: any;
 
   getCurrentList(){
     return this.currentList
   }
 
+
   createList(title: string){
+    this.currentUser = this.userService.getCurrentUser()
     const listData = {
       title: title,
       userId: this.currentUser.id
@@ -28,6 +30,7 @@ export class ListService {
       .then(response => response.json())
       .then((data) => {
         data.user = this.currentUser
+        this.currentList = data
         this.userService.updateUserLists(data)
         resolve(data)
       })
